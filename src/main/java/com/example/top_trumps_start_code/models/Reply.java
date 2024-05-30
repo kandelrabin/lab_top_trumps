@@ -1,21 +1,32 @@
 package com.example.top_trumps_start_code.models;
-
-//dto
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class Reply {
-
+    @JsonIgnore
     private boolean win;
+    @JsonIgnore
     private Suit suit;
+    @JsonIgnore
     private Rank rank;
+    private String message;
 
 
-    public Reply(Suit suit, Rank rank,boolean win){
-        this.win = false;
+    public Reply(Suit suit, Rank rank, boolean win){
+        this.win = win;
         this.suit = suit;
         this.rank = rank;
+        this.message = "";
     }
 
     public Reply(){
+    }
+
+    public String getMessage(){
+        return this.message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     public boolean getWin() {

@@ -25,7 +25,7 @@ public enum Rank {
     }
 
     //methods
-    int getValue(){
+    public int getValue(){
         return this.value;
     }
 

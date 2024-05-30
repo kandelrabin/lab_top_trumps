@@ -24,9 +24,13 @@ public class TopTrumpsController {
 
     @PostMapping
     public ResponseEntity<Reply> putCards(@RequestBody ArrayList<Card> cards){
-        Reply reply = topTrumpService.processCards(cards);
+        Card firstCard = cards.get(0);
+        Card secondCard = cards.get(1);
+        Reply reply = topTrumpService.checkWinner(firstCard, secondCard);
         return new ResponseEntity<>(reply, HttpStatus.OK);
     };
+
+
 
 
 
