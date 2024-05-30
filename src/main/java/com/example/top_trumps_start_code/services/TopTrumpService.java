@@ -36,7 +36,13 @@ public class TopTrumpService {
                             reply.getRank(),
                             reply.getSuit()));
             return reply;
-        } else {
+        } else if (firstCard.getRank().getValue() == secondCard.getRank().getValue()){
+            reply = new Reply();
+            reply.setMessage("It's a draw!");
+            return reply;
+        }
+
+        else {
             reply = new Reply(
                     secondCard.getSuit(),
                     secondCard.getRank(),
@@ -46,6 +52,8 @@ public class TopTrumpService {
                     reply.getSuit()));
             return reply;
         }
+
+
 
     }
 
