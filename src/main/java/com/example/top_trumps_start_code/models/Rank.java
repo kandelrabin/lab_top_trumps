@@ -1,5 +1,6 @@
 package com.example.top_trumps_start_code.models;
 
+//enum
 public enum Rank {
 
     TWO(2),
@@ -18,10 +19,12 @@ public enum Rank {
 
     private int value;
 
+    //constructor
     Rank(int value){
         this.value = value;
     }
 
+    //methods
     int getValue(){
         return this.value;
     }
