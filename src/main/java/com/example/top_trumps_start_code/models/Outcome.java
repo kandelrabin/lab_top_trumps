@@ -1,18 +1,18 @@
 package com.example.top_trumps_start_code.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-public class Reply {
+public class Outcome {
     @JsonIgnore
     private boolean win;
     private String message;
 
 
-    public Reply(boolean win){
+    public Outcome(boolean win){
         this.win = win;
         this.message = "";
     }
 
-    public Reply(){
+    public Outcome(){
     }
 
     public String getMessage(){

@@ -3,7 +3,6 @@ package com.example.top_trumps_start_code.services;
 import com.example.top_trumps_start_code.models.*;
 import org.springframework.stereotype.Service;
 
-import java.security.interfaces.EdECKey;
 import java.util.ArrayList;
 
 @Service
@@ -12,53 +11,38 @@ public class TopTrumpService {
     public TopTrumpService(){
     }
 
-    public Reply startNewGame(){
-        Reply reply;
-        DeckOfCards deckOfCards = new DeckOfCards();
-        for (Rank rank : Rank.values()){
-            for (Suit suit: Suit.values()){
-                deckOfCards.addToDeck(new Card(rank, suit));
-            }
-        }
-        reply = new Reply(false);
-        return reply;
+
+    public ArrayList<Card> deal(Game game){
+        ArrayList<Card> cardsDealt = new ArrayList<>();
+        cardsDealt.add(game.getDeck().remove(0));
+        cardsDealt.add(game.getDeck().remove(0));
+        return cardsDealt;
     }
 
-    public Reply processCards(ArrayList<Card> cards){
-        Reply reply = null;
-        for( Card card : cards){
-            reply = new Reply(false);
-        }
-        return reply;
-    }
-
-    public Reply checkWinner(Card firstCard, Card secondCard){
-        Reply reply;
+    public Outcome checkWinner(Card firstCard, Card secondCard){
+        Outcome outcome;
         if (firstCard.getRank().getValue() > secondCard.getRank().getValue()){
 
-            reply = new Reply(
+            outcome = new Outcome(
                     true);
-            reply.setMessage(
+            outcome.setMessage(
                     String.format("%s of %s wins!",
                             firstCard.getRank(),
                             firstCard.getSuit()));
-            return reply;
+            return outcome;
         } else if (firstCard.getRank().getValue() == secondCard.getRank().getValue()){
-            reply = new Reply();
-            reply.setMessage("It's a draw!");
-            return reply;
+            outcome = new Outcome();
+            outcome.setMessage("It's a draw!");
+            return outcome;
         } else {
-            reply = new Reply(
+            outcome = new Outcome(
 
                     true);
-            reply.setMessage(String.format("%s of %s wins!",
+            outcome.setMessage(String.format("%s of %s wins!",
                     secondCard.getRank(),
                     secondCard.getSuit()));
-            return reply;
+            return outcome;
         }
-
-
-
 
 
     }
